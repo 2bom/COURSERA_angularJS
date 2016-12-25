@@ -30,6 +30,9 @@
 <div class="container">
   <div class="row row-content" ng-controller="menuController as menuCtrl">
     <div class="col-xs-12">
+      <button ng-click="toggleDetails()" class="btn btn-xs btn-primary pull-right" type="button">
+        {{showDetails ? 'Hide Details' : 'Show Details'}}
+      </button>
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" ng-class="{active:menuCtrl.isSelected(1)}"><a ng-click="menuCtrl.select(1)" aria-controls="all menu" role="tab">The menu</a></li>
         <li role="presentation" ng-class="{active:menuCtrl.isSelected(2)}"><a ng-click="menuCtrl.select(2)" aria-controls="appetizers" role="tab">Appetizers</a></li>
@@ -39,7 +42,7 @@
       <div class="tab-content">
         <ul class="media-list tab-pane fade in active">
           <div class="media-list">
-            <li class="media" ng-repeat="dish in menuCtrl.dishes | filter:menuCtrl.filtText">
+            <li class="media" ng-repeat="dish in dishes | filter:menuCtrl.filtText">
               <div class="media-left media-middle">
                 <a href="#">
                   <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="Uthappizza">
@@ -52,7 +55,7 @@
                   <!-- Angular built-in filters : uppercase, lowercase, currency, date, filter, orderBy... json, limitTo...
                   -->
                 </h2>
-                <p>{{dish.description}}</p>
+                <p ng-show="showDetails">{{dish.description}}</p>
               </div>
             </li>
           </div>
