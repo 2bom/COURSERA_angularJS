@@ -79,7 +79,7 @@
           <label for="lastname" class="col-sm-2 control-label">Last Name</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name" ng-model="feedback.lastName" required>
-            <span ng-show="feedback.lastname.$error.required && !feedback.firstname.$pristine" ></span>
+            <span ng-show="feedback.lastname.$error.required && !feedback.firstname.$pristine" >Your Last name is required.</span>
           </div>
         </div>
         <div class="form-group">
