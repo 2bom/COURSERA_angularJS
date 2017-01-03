@@ -63,7 +63,6 @@ angular.module('confusionApp')
           $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
           $scope.feedback.mychannel="";
           $scope.feedbackForm.$setPristine();
-          console.log($scope.feedback);
         }
       };
     }])
@@ -103,12 +102,27 @@ angular.module('confusionApp')
     }])
     
     // implement the IndexController and About Controller here
-    .controller('IndexController', ['$scope', function($scope){
-      
+    .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory){
+      $scope.featuredDish = menuFactory.getDish(0);
+      $scope.promotion = menuFactory.getPromotion(0);
+      $scope.chef = corporateFactory.getLeader(3);
+      console.log($scope.chef);
     }])
 
     .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory){
-      
+      $scope.leaders = corporateFactory.getLeaders();
     }])
+
+    
+.controller('HeaderController', ['$scope', function($scope){
+  var navClass= [0,0,0,0];
+  $scope.navClass = navClass;
+  $scope.navClicked = function(index){
+    if ($scope.navClass[index] == 0){
+      $scope.navClass = [0,0,0,0];
+      $scope.navClass[index] = "active";
+    }
+  }
+}])
 
 ;

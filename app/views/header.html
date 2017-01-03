@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="HeaderController">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -11,17 +11,17 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a ui-sref="app">
+        <li ng-class="navClass[0]"><a ng-click="navClicked(0)" ui-sref="app">
                         <span class="glyphicon glyphicon-home"
                               aria-hidden="true"></span> Home</a></li>
-        <li><a ui-sref="app.aboutus">
+        <li ng-class="navClass[1]"><a ng-click="navClicked(1)" ui-sref="app.aboutus">
                         <span class="glyphicon glyphicon-info-sign"
                               aria-hidden="true"></span> About</a></li>
-        <li><a ui-sref="app.menu">
+        <li ng-class="navClass[2]"><a ng-click="navClicked(2)" ui-sref="app.menu">
                          <span class="glyphicon glyphicon-list-alt"
                                aria-hidden="true"></span>
           Menu</a></li>
-        <li><a ui-sref="app.contactus">
+        <li ng-class="navClass[3]"><a ng-click="navClicked(3)" ui-sref="app.contactus">
           <i class="fa fa-envelope-o"></i> Contact</a></li>
       </ul>
     </div>
